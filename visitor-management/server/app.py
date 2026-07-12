@@ -1,5 +1,6 @@
 import logging
 import os
+from os import getenv
 from flask import Flask, jsonify
 from flask_cors import CORS
 from flask_jwt_extended import JWTManager
@@ -131,6 +132,13 @@ def create_app() -> Flask:
 
 
 if __name__ == "__main__":
-        app = create_app()
-        app.logger.info("Starting Smart Visitor Management backend on port 5000")
-        socketio.run(app, host="0.0.0.0", port=5000, debug=app.config.get("DEBUG", False))
+    app = create_app()
+    port = int(getenv("PORT", 5000))
+    app.logger.info(f"Starting Smart Visitor Management backend on port {port}")
+    socketio.run(
+        app,
+        host="0.0.0.0",
+        port=port,
+        debug=app.config.get("DEBUG", False),
+        allow_unsafe_werkzeug=True
+    )
