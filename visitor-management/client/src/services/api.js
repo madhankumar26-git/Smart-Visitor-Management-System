@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const api = axios.create({
-  baseURL: 'https://smart-visitor-management-system-6s9e.onrender.com',
+  baseURL: 'https://smart-visitor-management-system-h2s5.onrender.com',
   headers: {
     'Content-Type': 'application/json',
   },
@@ -43,7 +43,8 @@ api.interceptors.response.use(
     if (error.response?.status === 401 && user?.refresh_token && !originalRequest?._retry) {
       originalRequest._retry = true
       try {
-        const refreshResponse = await axios.post('https://smart-visitor-management-system-6s9e.onrender.com/api/auth/refresh', {}, {
+        const refreshResponse = await axios.post(
+  'https://smart-visitor-management-system-h2s5.onrender.com/api/auth/refresh', {}, {
           headers: { Authorization: `Bearer ${user.refresh_token}` },
         })
         const newToken = refreshResponse.data.token
