@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
+import { Routes, Route, Navigate } from 'react-router-dom'
 import { AuthProvider, useAuth } from './context/AuthContext'
 import { ThemeProvider } from './context/ThemeContext'
 import Login from './pages/Login'
@@ -56,26 +56,24 @@ export default function App() {
   return (
     <AuthProvider>
       <ThemeProvider>
-        <Router>
-          <Routes>
-            <Route path="/login" element={<Login />} />
-            <Route path="/" element={<RootRedirect />} />
-            <Route path="/admin" element={<Layout><ProtectedRoute element={AdminDashboard} role="admin" /></Layout>} />
-            <Route path="/security" element={<Layout><ProtectedRoute element={SecurityDashboard} role="security" /></Layout>} />
-            <Route path="/visitors" element={<Layout><ProtectedRoute element={Visitors} /></Layout>} />
-            <Route path="/add-visitor" element={<Layout><ProtectedRoute element={AddVisitor} role="admin" /></Layout>} />
-            <Route path="/reports" element={<Layout><ProtectedRoute element={Reports} role="admin" /></Layout>} />
-            <Route path="/analytics" element={<Layout><ProtectedRoute element={Analytics} role="admin" /></Layout>} />
-            <Route path="/scan-qr" element={<Layout><ProtectedRoute element={ScanQRCode} /></Layout>} />
-            <Route path="/profile" element={<Layout><ProtectedRoute element={Profile} /></Layout>} />
-            <Route path="/account-settings" element={<Layout><ProtectedRoute element={AccountSettings} role="admin" /></Layout>} />
-            <Route path="/company-settings" element={<Layout><ProtectedRoute element={CompanySettings} role="admin" /></Layout>} />
-            <Route path="/activity-logs" element={<Layout><ProtectedRoute element={ActivityLogs} role="admin" /></Layout>} />
-            <Route path="/unauthorized" element={<Unauthorized />} />
-            <Route path="/500" element={<Error500 />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </Router>
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/" element={<RootRedirect />} />
+          <Route path="/admin" element={<Layout><ProtectedRoute element={AdminDashboard} role="admin" /></Layout>} />
+          <Route path="/security" element={<Layout><ProtectedRoute element={SecurityDashboard} role="security" /></Layout>} />
+          <Route path="/visitors" element={<Layout><ProtectedRoute element={Visitors} /></Layout>} />
+          <Route path="/add-visitor" element={<Layout><ProtectedRoute element={AddVisitor} role="admin" /></Layout>} />
+          <Route path="/reports" element={<Layout><ProtectedRoute element={Reports} role="admin" /></Layout>} />
+          <Route path="/analytics" element={<Layout><ProtectedRoute element={Analytics} role="admin" /></Layout>} />
+          <Route path="/scan-qr" element={<Layout><ProtectedRoute element={ScanQRCode} /></Layout>} />
+          <Route path="/profile" element={<Layout><ProtectedRoute element={Profile} /></Layout>} />
+          <Route path="/account-settings" element={<Layout><ProtectedRoute element={AccountSettings} role="admin" /></Layout>} />
+          <Route path="/company-settings" element={<Layout><ProtectedRoute element={CompanySettings} role="admin" /></Layout>} />
+          <Route path="/activity-logs" element={<Layout><ProtectedRoute element={ActivityLogs} role="admin" /></Layout>} />
+          <Route path="/unauthorized" element={<Unauthorized />} />
+          <Route path="/500" element={<Error500 />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
       </ThemeProvider>
     </AuthProvider>
   )
