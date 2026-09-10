@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#080D1A"/>
+    </linearGradient>
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#60A5FA"/>
+      <stop offset="100%" stop-color="#2563EB"/>
+    </linearGradient>
+    <filter id="subtleGlow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000000" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <!-- Dark Navy Rounded Square Background -->
+  <rect x="31" y="31" width="450" height="450" rx="110" ry="110" fill="url(#bgGrad)" stroke="#2563EB" stroke-width="8" stroke-opacity="0.55"/>
+
+  <!-- "M" Monogram - Crisp White -->
+  <g stroke="#FFFFFF" stroke-width="37" stroke-linecap="round" stroke-linejoin="round" fill="none" filter="url(#subtleGlow)">
+    <path d="M 97 374 L 97 138 L 164 282 L 230 138 L 230 374" />
+  </g>
+
+  <!-- "K" Monogram - Vibrant Corporate Blue -->
+  <g stroke="url(#blueGrad)" stroke-width="37" stroke-linecap="round" stroke-linejoin="round" fill="none" filter="url(#subtleGlow)">
+    <!-- Vertical Stem -->
+    <path d="M 292 138 L 292 374" />
+    <!-- Upper Arm -->
+    <path d="M 292 256 L 415 138" />
+    <!-- Lower Arm -->
+    <path d="M 334 216 L 415 374" />
+  </g>
+</svg>
