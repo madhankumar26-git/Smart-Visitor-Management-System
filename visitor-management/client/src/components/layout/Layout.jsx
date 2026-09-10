@@ -1,7 +1,9 @@
-import { Link, useLocation } from 'react-router-dom'
+import { useState } from 'react'
+import { useLocation } from 'react-router-dom'
 import { useAuth } from '../../context/AuthContext'
 import Navbar from './Navbar'
 import Sidebar from './Sidebar'
+import Footer from './Footer'
 
 const navItems = [
   { label: 'Dashboard', path: '/admin', roles: ['admin'] },
@@ -20,13 +22,32 @@ const navItems = [
 export default function Layout({ children }) {
   const { user, logout } = useAuth()
   const location = useLocation()
+  const [mobileOpen, setMobileOpen] = useState(false)
 
   return (
-    <div className="min-h-screen bg-background text-textPrimary dark:bg-slate-950 dark:text-slate-100">
-      <Sidebar user={user} navItems={navItems} logout={logout} location={location} />
-      <div className="ml-0 md:ml-72 transition-all duration-300">
-        <Navbar user={user} />
-        <main className="p-4 md:p-6 lg:p-8">{children}</main>
+    <div className="min-h-screen bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 flex flex-col antialiased">
+      {/* Sidebar (Desktop fixed 72 & Mobile Drawer) */}
+      <Sidebar
+        user={user}
+        navItems={navItems}
+        logout={logout}
+        location={location}
+        mobileOpen={mobileOpen}
+        setMobileOpen={setMobileOpen}
+      />
+
+      {/* Main Content Area */}
+      <div className="flex flex-1 flex-col transition-all duration-300 md:ml-72 min-h-screen">
+        <Navbar
+          user={user}
+          onToggleSidebar={() => setMobileOpen(!mobileOpen)}
+        />
+        <main className="flex-1 p-4 sm:p-6 lg:p-8">
+          <div className="mx-auto max-w-7xl">
+            {children}
+          </div>
+        </main>
+        <Footer />
       </div>
     </div>
   )
